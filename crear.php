@@ -30,7 +30,6 @@
                 $sql = "INSERT INTO `productos`(`nombre`, `nombre_corto`, `descripcion`, `pvp`, `familia`) VALUES ('$nombre','$nombre_corto','$descripcion','$precio','$familia')";
                         
                 $crear = $conProyecto->query($sql);
-                $crear->execute();
 
                 header('Location:listado.php');
 
