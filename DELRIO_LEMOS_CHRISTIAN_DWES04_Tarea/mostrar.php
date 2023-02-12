@@ -1,20 +1,19 @@
 <?php session_start();     //Inicio la sesión
 
 
-    if(isset($_POST['borrar'])){    //Borramos las preferencias
+    if((isset($_SESSION['idioma']) || isset($_SESSION['perfil']) || isset($_SESSION['zona'])) && isset($_POST['borrar'])){    //Borramos las preferencias
         
 
         $_SESSION['idioma']="";       
         $_SESSION['perfil']="";
         $_SESSION['zona']="";
         
-        session_destroy();  
+        unset($_SESSION);  
 
-        ob_start();  //Recargamos la página
         echo "<p class='text-danger'>Se han borrado las preferencias de usuario</p>"; //Mostramos mensaje
     }
     
-    if(!isset($_SESSION)){
+    if(!isset($_SESSION) && isset($_POST['borrar'])){
         echo "<p class='text-danger'>Debes fijar primero las preferencias</p>";
     }
 
